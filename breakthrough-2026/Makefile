@@ -11,4 +11,4 @@ min_max_gsbsclme: bkbb64.h min_max_gsbsclme.cpp
 	$(CC) $(CFLAGS) min_max_gsbsclme.cpp -o $@
 
 clean:
-	rm -rf *~ nb_playout_per_sec rand_player
+	rm -rf *~ nb_playout_per_sec rand_player min_max_gsbsclme
