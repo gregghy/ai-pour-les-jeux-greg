@@ -160,7 +160,7 @@ int main(int _ac, char** _av) {
     return 0;
   }
   Board64_t B(_av[1]);
-  bool debug = false;
+  bool debug = true;
   if(debug) {
     B.print_board(stderr);
   }

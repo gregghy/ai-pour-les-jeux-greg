@@ -19,7 +19,8 @@ public class MinMaxGSBSCLME extends AI
 	public final static int EMPTY = 0;
 	public final static int BLACK = 1;
 	public final static int WHITE = 2;
-	public final static String local_player_str = "/Users/n/LudiiPlayers/min_max_gsbsclme";
+	//public final static String local_player_str = "/Users/n/LudiiPlayers/min_max_gsbsclme";
+	public final static String local_player_str = "../min_max_gsbsclme";
 
 	protected int player = -1; // player_index
 	
@@ -62,16 +63,16 @@ public class MinMaxGSBSCLME extends AI
 		int line_f = -1;
 		int col_f = -1;
 		try {
-			  //System.out.println("[info] "+sb.toString()+" "+turn);
+			  System.out.println("[info] "+sb.toString()+" "+turn);
 				Process process = startProcessLocal(local_player_str,sb.toString(), turn);
 				res = endProcessLocal(process);
 				if(res.length()==5) {
-					//System.out.println("[info] "+local_player_str+" play "+res);
+					System.out.println("[info] "+local_player_str+" play "+res);
 	  	  	col_i = res.charAt(0)-'A';
   		  	line_i = res.charAt(1)-'1';
 		    	col_f = res.charAt(3)-'A';
 		    	line_f = res.charAt(4)-'1';
-    			//System.err.println("= ("+line_i+" "+col_i+") ("+line_f+" "+col_f+")");
+    			System.err.println("= ("+line_i+" "+col_i+") ("+line_f+" "+col_f+")");
 				} else {
 					System.err.println("error res.length() "+res.length());
 				}
@@ -83,9 +84,9 @@ public class MinMaxGSBSCLME extends AI
 	  	int pos_f = line_f*8+col_f;
 			char ccoli = (char)('A'+col_i);
 			char ccolf = (char)('A'+col_f);
-    	//System.err.println(local_player_str+" play ["+pos_i+" "+pos_f+"] "+(line_i+1)+ccoli+"-"+(line_f+1)+ccolf);
+    	System.err.println(local_player_str+" play ["+pos_i+" "+pos_f+"] "+(line_i+1)+ccoli+"-"+(line_f+1)+ccolf);
 		  for(int i = 0; i < legalMoves.size(); i++) {
-			  if(legalMoves.get(i).from() == pos_i && legalMoves.get(i).to() == pos_f) {return legalMoves.get(i);}
+			  if(legalMoves.get(i).from() == pos_i && legalMoves.get(i).to() == pos_f) {System.err.println(""); return legalMoves.get(i);}
 		  }
 		}	  
 		System.out.println(local_player_str+" play random");
@@ -126,8 +127,8 @@ public class MinMaxGSBSCLME extends AI
 				}
 				process.waitFor();
 		} catch(Exception e) { System.err.println(e); } 		
-		//System.err.println(processErr.toString().trim());
-		//System.err.println("getProcessOutput end ---\n");
+		System.err.println(processErr.toString().trim());
+		System.err.println("getProcessOutput end ---\n");
 		return processOutput.toString().trim();
 	}
 }
